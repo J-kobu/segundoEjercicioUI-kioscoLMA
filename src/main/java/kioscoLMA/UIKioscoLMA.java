@@ -1,6 +1,7 @@
 
 package kioscoLMA;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -421,6 +422,7 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         cbxChoclo.setSelected(false);
         cbxPalmitos.setSelected(false);
         cbxEsparragos.setSelected(false);
+        spnCantidad.setValue(0);
         
     }//GEN-LAST:event_btnBorrarActionPerformed
 
@@ -477,6 +479,7 @@ public class UIKioscoLMA extends javax.swing.JFrame {
     }//GEN-LAST:event_rdPizzaActionPerformed
 
     public void calcularPrecioAndpresupuesto(int opcionBoton) {
+        DecimalFormat decimal = new DecimalFormat("###,###");
         int totalPagar = 0;
         boolean banderaTamano = true, banderaPedido = true, banderaBebida = true;
         String msjError = "Debe seleccionar: \n", detalleCompra = "Detalle de la compra: \n\n";
@@ -526,7 +529,7 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         if (cbxMayo.isSelected()) {
             totalPagar += 200;
             detalleCompra += "Mayonesa: $200\n";
-        }
+        }       
         if (cbxKetchup.isSelected()) {
             detalleCompra += "Ketchup: $0\n";
         }
@@ -610,12 +613,12 @@ public class UIKioscoLMA extends javax.swing.JFrame {
             spnCantidad.setValue(cantidad);
         }
         
-        detalleCompra += "\nCantidad: "+ cantidad + "\n\nTotal a pagar: $" +totalPagar;
+        detalleCompra += "\nCantidad: "+ cantidad + "\n\nTotal a pagar: $" + decimal.format(totalPagar);
         
         if (banderaPedido || banderaTamano || banderaBebida) {
             JOptionPane.showMessageDialog(null, msjError);
         } else if (opcionBoton == 1) {
-            JOptionPane.showMessageDialog(null, "Total a pagar: " + (totalPagar * cantidad));
+            JOptionPane.showMessageDialog(null, "Total a pagar: $" + decimal.format((totalPagar * cantidad)));
         } else {
             txtAreaTotalPagar.setText(detalleCompra);
         }
