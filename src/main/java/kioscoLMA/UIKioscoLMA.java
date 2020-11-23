@@ -407,7 +407,8 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         btnGrpTipoPedido.clearSelection();
         cbTamano.setSelectedIndex(0);
         cbBebida.setSelectedIndex(0);
-        //Agregados completo/sandwich
+        
+        //Agregados completo/sandwich desmarcados
         cbxMayo.setSelected(false);
         cbxKetchup.setSelected(false);
         cbxMostza.setSelected(false);
@@ -415,13 +416,16 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         cbxTomate.setSelected(false);
         cbxPalta.setSelected(false);
         cbxChucrut.setSelected(false);
-        //Agregados pizza
+       
+        //Agregados pizza desmarcados
         cbxExtraQueso.setSelected(false);
         cbxCarne.setSelected(false);
         cbxChoricillo.setSelected(false);
         cbxChoclo.setSelected(false);
         cbxPalmitos.setSelected(false);
         cbxEsparragos.setSelected(false);
+       
+        //Spinner a 0
         spnCantidad.setValue(0);
         
     }//GEN-LAST:event_btnBorrarActionPerformed
@@ -431,12 +435,23 @@ public class UIKioscoLMA extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void rdCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdCompletoActionPerformed
+        //Deshabilitado los agregados de pizza
         cbxExtraQueso.setEnabled(false);
         cbxCarne.setEnabled(false);
         cbxChoricillo.setEnabled(false);
         cbxChoclo.setEnabled(false);
         cbxPalmitos.setEnabled(false);
         cbxEsparragos.setEnabled(false);
+        
+        //Eliminando los agregados de pizza
+        cbxExtraQueso.setSelected(false);
+        cbxCarne.setSelected(false);
+        cbxChoricillo.setSelected(false);
+        cbxChoclo.setSelected(false);
+        cbxPalmitos.setSelected(false);
+        cbxEsparragos.setSelected(false);
+        
+        //Habilitando los agregados de completo y sandwich
         cbxMayo.setEnabled(true);
         cbxKetchup.setEnabled(true);
         cbxMostza.setEnabled(true);
@@ -447,12 +462,23 @@ public class UIKioscoLMA extends javax.swing.JFrame {
     }//GEN-LAST:event_rdCompletoActionPerformed
 
     private void rdSandwichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdSandwichActionPerformed
+        //deshabilitado los agregados de pizza
         cbxExtraQueso.setEnabled(false);
         cbxCarne.setEnabled(false);
         cbxChoricillo.setEnabled(false);
         cbxChoclo.setEnabled(false);
         cbxPalmitos.setEnabled(false);
         cbxEsparragos.setEnabled(false);
+        
+        ////Eliminando los agregados de pizza
+        cbxExtraQueso.setSelected(false);
+        cbxCarne.setSelected(false);
+        cbxChoricillo.setSelected(false);
+        cbxChoclo.setSelected(false);
+        cbxPalmitos.setSelected(false);
+        cbxEsparragos.setSelected(false);
+        
+         //Habilitando los agregados de completo y sandwich
         cbxMayo.setEnabled(true);
         cbxKetchup.setEnabled(true);
         cbxMostza.setEnabled(true);
@@ -463,6 +489,7 @@ public class UIKioscoLMA extends javax.swing.JFrame {
     }//GEN-LAST:event_rdSandwichActionPerformed
 
     private void rdPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdPizzaActionPerformed
+        //Deshabilitados los agregados de completo/sanswich
         cbxMayo.setEnabled(false);
         cbxKetchup.setEnabled(false);
         cbxMostza.setEnabled(false);
@@ -470,6 +497,17 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         cbxTomate.setEnabled(false);
         cbxPalta.setEnabled(false);
         cbxChucrut.setEnabled(false);
+        
+        //Agregados completo/sandwich desmarcados
+        cbxMayo.setSelected(false);
+        cbxKetchup.setSelected(false);
+        cbxMostza.setSelected(false);
+        cbxSalsaAmericana.setSelected(false);
+        cbxTomate.setSelected(false);
+        cbxPalta.setSelected(false);
+        cbxChucrut.setSelected(false);
+        
+        //Habilitado agregado pizza
         cbxExtraQueso.setEnabled(true);
         cbxCarne.setEnabled(true);
         cbxChoricillo.setEnabled(true);
@@ -613,7 +651,7 @@ public class UIKioscoLMA extends javax.swing.JFrame {
             spnCantidad.setValue(cantidad);
         }
         
-        detalleCompra += "\nCantidad: "+ cantidad + "\n\nTotal a pagar: $" + decimal.format(totalPagar);
+        detalleCompra += "\nCantidad: "+ cantidad + "\n\nTotal a pagar: $" + decimal.format((totalPagar * cantidad));
         
         if (banderaPedido || banderaTamano || banderaBebida) {
             JOptionPane.showMessageDialog(null, msjError);
