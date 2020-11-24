@@ -424,6 +424,23 @@ public class UIKioscoLMA extends javax.swing.JFrame {
         cbxChoclo.setSelected(false);
         cbxPalmitos.setSelected(false);
         cbxEsparragos.setSelected(false);
+        
+        //Habilitando los agregados de completo y sandwich
+        cbxMayo.setEnabled(true);
+        cbxKetchup.setEnabled(true);
+        cbxMostza.setEnabled(true);
+        cbxSalsaAmericana.setEnabled(true);
+        cbxTomate.setEnabled(true);
+        cbxPalta.setEnabled(true);
+        cbxChucrut.setEnabled(true);
+        
+        //Habilitado agregados pizza
+        cbxExtraQueso.setEnabled(true);
+        cbxCarne.setEnabled(true);
+        cbxChoricillo.setEnabled(true);
+        cbxChoclo.setEnabled(true);
+        cbxPalmitos.setEnabled(true);
+        cbxEsparragos.setEnabled(true);
        
         //Spinner a 0
         spnCantidad.setValue(0);
